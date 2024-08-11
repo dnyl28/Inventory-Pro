@@ -158,7 +158,7 @@ export default function Home() {
   }, [router, updateInventory]);
 
   const addItem = async () => {
-    if (String(itemName).trim() === '' || String(itemPrice).trim() === '' || isNaN(parseFloat(itemPrice)) || String(itemQuantity).trim() === '' || isNaN(parseInt(itemQuantity)) || String(itemCategory).trim() === '' || String(itemUnit).trim() === '') return;
+    if (itemName.trim() === '' || itemPrice.trim() === '' || isNaN(parseFloat(itemPrice)) || itemQuantity.trim() === '' || isNaN(parseInt(itemQuantity)) || itemCategory.trim() === '' || itemUnit.trim() === '') return;
 
     try {
       const docRef = doc(collection(firestore, `users/${user.uid}/inventory`), itemName);
@@ -186,7 +186,7 @@ export default function Home() {
   };
 
   const editExistingItem = async () => {
-    if (!editItem || String(itemName).trim() === '' || isNaN(parseFloat(itemPrice)) || String(itemQuantity).trim() === '' || isNaN(parseInt(itemQuantity))) {
+    if (!editItem || itemName.trim() === '' || isNaN(parseFloat(itemPrice)) || itemQuantity.trim() === '' || isNaN(parseInt(itemQuantity))) {
         return;
     }
 
