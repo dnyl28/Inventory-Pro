@@ -2,6 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth'; // Import the Firebase Authentication module
+import { auth, firestore } from '@/firebase';
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
