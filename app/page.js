@@ -1,6 +1,5 @@
 'use client';
 import Image from 'next/image';
-import { Html, Head, Main, NextScript } from 'next/document';
 import { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Box, Stack, Button, Modal, TextField, Container, Grid, Paper, IconButton, MenuItem } from '@mui/material';
 import { Add, Remove } from '@mui/icons-material';
