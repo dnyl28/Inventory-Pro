@@ -86,7 +86,7 @@ export default function Login() {
             Sign In
           </Button>
           <Typography variant="body2" sx={{ color: 'white', mt: 2 }}>
-            Don't have an account? <a href="/signup" style={{ color: '#673AB7' }}>Sign up here</a>
+            Don&apos;t have an account? <a href="/signup" style={{ color: '#673AB7' }}>Sign up here</a>
           </Typography>
         </Stack>
       </Paper>
