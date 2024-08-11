@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Box, Stack, Button, Modal, TextField, Container, Grid, Paper, IconButton, MenuItem } from '@mui/material';
 import { Add, Remove } from '@mui/icons-material';
-import { firestore, auth } from '@/firebase';
+import { auth, firestore } from '@/firebase';
 import { collection, doc, getDocs, query, setDoc, deleteDoc, getDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
