@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation'; 
 import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from 'firebase/auth';
 import { auth, firestore } from '@/firebase';
-import { Box, Typography, TextField, Button, Stack, Paper, CircularProgress } from '@mui/material';
+import { Box, Typography, TextField, Button, Stack, Paper, CircularProgress, Grid } from '@mui/material';
 import { doc, setDoc } from 'firebase/firestore';
 
 const backgroundImage = {
@@ -17,6 +17,18 @@ const backgroundImage = {
   justifyContent: 'center',
   alignItems: 'center',
 };
+
+const gradientBackground = {
+  background: 'linear-gradient(135deg, #0c0d34 0%, #1c1d40 100%)',
+  height: '100vh',
+  width: '100vw',
+  color: 'white',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontFamily: 'Roboto, sans-serif',
+};
+
 
 const paperStyles = {
   padding: '30px',
@@ -65,6 +77,17 @@ const headingStyles = {
   fontWeight: 'bold',
   letterSpacing: '1px',
   textTransform: 'uppercase',
+  textAlign: 'center', // Center the heading
+};
+
+const leftSectionStyles = {
+  padding: '40px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: 'white',
+  textAlign: { xs: 'center', md: 'left' },  // Center the text for mobile, left-align for desktop
 };
 
 export default function Signup() {
@@ -124,72 +147,88 @@ export default function Signup() {
   };
 
   return (
-    <Box sx={backgroundImage}>
-      <Paper elevation={3} sx={paperStyles}>
-        <Typography variant="h4" sx={headingStyles}>
-          Create Account
-        </Typography>
-        {error && (
-          <Typography variant="body1" sx={{ color: 'red', mb: 2 }}>
-            {error}
+    <Box sx={gradientBackground}>
+      <Grid container justifyContent="center" alignItems="center" sx={{ height: '100vh' }}>
+        {/* Left section */}
+        <Grid item xs={12} md={6} sx={leftSectionStyles}>
+          <Typography variant="h2" sx={{ color: '#673AB7', mb: 4, fontSize: { xs: '2.5rem', md: '3.5rem' } }}>
+            Inventory Pro
           </Typography>
-        )}
-        <Stack spacing={2} width="100%">
-          <TextField
-            label="First Name"
-            variant="outlined"
-            fullWidth
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            sx={inputStyles}
-          />
-          <TextField
-            label="Last Name"
-            variant="outlined"
-            fullWidth
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            sx={inputStyles}
-          />
-          <TextField
-            label="Email"
-            variant="outlined"
-            fullWidth
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            sx={inputStyles}
-          />
-          <TextField
-            label="Password"
-            variant="outlined"
-            fullWidth
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            sx={inputStyles}
-          />
-          <TextField
-            label="Confirm Password"
-            variant="outlined"
-            fullWidth
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            sx={inputStyles}
-          />
-          <Button
-            variant="contained"
-            sx={buttonStyles}
-            onClick={handleSignup}
-            disabled={loading} // Disable the button when loading
-          >
-            {loading ? <CircularProgress size={24} sx={{ color: 'white' }} /> : 'Sign Up'}
-          </Button>
-          <Typography variant="body2" sx={{ color: 'white', mt: 2 }}>
-            Already have an account? <a href="/login" style={{ color: '#673AB7' }}>Log in here</a>
+          <Typography variant="h6" sx={{ textAlign: 'center', fontSize: { xs: '1rem', md: '1.25rem' } }}>
+            Efficiently manage and track your inventory with our robust system,
+            ensuring your stock levels are always accurate and up-to-date.
           </Typography>
-        </Stack>
-      </Paper>
+        </Grid>
+
+        {/* Sign-up form */}
+        <Grid item xs={12} md={6} >
+          <Paper elevation={3} sx={paperStyles}>
+            <Typography variant="h4" sx={headingStyles}>
+              Create Account
+            </Typography>
+            {error && (
+              <Typography variant="body1" sx={{ color: 'red', mb: 2 }}>
+                {error}
+              </Typography>
+            )}
+            <Stack spacing={2} width="100%">
+              <TextField
+                label="First Name"
+                variant="outlined"
+                fullWidth
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                sx={inputStyles}
+              />
+              <TextField
+                label="Last Name"
+                variant="outlined"
+                fullWidth
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                sx={inputStyles}
+              />
+              <TextField
+                label="Email"
+                variant="outlined"
+                fullWidth
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                sx={inputStyles}
+              />
+              <TextField
+                label="Password"
+                variant="outlined"
+                fullWidth
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                sx={inputStyles}
+              />
+              <TextField
+                label="Confirm Password"
+                variant="outlined"
+                fullWidth
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                sx={inputStyles}
+              />
+              <Button
+                variant="contained"
+                sx={buttonStyles}
+                onClick={handleSignup}
+                disabled={loading} // Disable the button when loading
+              >
+                {loading ? <CircularProgress size={24} sx={{ color: 'white' }} /> : 'Sign Up'}
+              </Button>
+              <Typography variant="body2" sx={{ color: 'white', mt: 2, textAlign: 'center' }}>
+                Already have an account? <a href="/login" style={{ color: '#673AB7' }}>Log in here</a>
+              </Typography>
+            </Stack>
+          </Paper>
+        </Grid>
+      </Grid>
     </Box>
   );
 }

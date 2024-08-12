@@ -425,7 +425,7 @@ export default function Home() {
                           </IconButton>
                         </Box>
                         <Box display="flex" flexDirection="column" alignItems="center" sx={{ marginRight: 2 }}>
-                          <Image src={imageURL} alt={name} style={{ width: '50px', height: '50px', borderRadius: '8px' }} />
+                          <Image src={imageURL} alt={name} width={'50'} height={'50'} style={{ borderRadius: '8px' }} />
                         </Box>
                         <Box>
                           <Button variant="contained" sx={removeButtonStyles} onClick={() => removeItem(name)}>
